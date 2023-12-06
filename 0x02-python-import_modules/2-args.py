@@ -4,18 +4,10 @@ import sys
 if __name__ != "__main__":
     exit()
 
-args = "{:d} argument"
 argc = len(sys.argv) - 1
 if argc == 0:
-    args += 's.'
-elif argc == 1:
-    args += ':'
+    print("0 arguments.")
 else:
-    args += 's:'
-print(args.format(argc))
-
-i = 0
-for arg in sys.argv:
-    if i != 0:
+    print("1 argument:" if argc == 1 else "{:d} arguments:".format(argc))
+    for i, arg in enumerate(sys.argv[1:], start=1):
         print("{:d}: {:s}".format(i, arg))
-        i += 1
