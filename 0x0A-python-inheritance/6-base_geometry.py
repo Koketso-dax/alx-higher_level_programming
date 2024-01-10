@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Area Geometry class
+"""
 
 
 class BaseGeometry():

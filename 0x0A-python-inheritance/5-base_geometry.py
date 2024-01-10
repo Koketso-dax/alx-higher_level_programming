@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Base geometry super class
+"""
 
 
 class BaseGeometry():
