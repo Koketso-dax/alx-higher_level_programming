@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Overriden int module
+"""
 
 
 class MyInt(int):
