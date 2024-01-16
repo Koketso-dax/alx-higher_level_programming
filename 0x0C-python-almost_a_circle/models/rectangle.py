@@ -1,115 +1,109 @@
 #!/usr/bin/python3
-""" Rectangle derived class from Base """
+"""This module contains a rectangle class"""
+
 from models.base import Base
 
 
 class Rectangle(Base):
-    """ Rectangle subclass implementation """
+    """Represents a rectangle """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """ Constructor for subclass
-        args:
-            width (int): Width size
-            height (int): Height size
-            x (int, optional): X-coordinate of rectangle (0 by default)
-            y (int, optional): Y-coordinate of rectangle (0 by default)
-            id (int, optional): ID value default None.
-        """
-        super().__init__(id)
+        """Initializes attributes of the object"""
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
+    # List of getter functions
     @property
     def width(self):
-        """ width getter """
+        """Gets the value for width"""
         return self.__width
-
-    @width.setter
-    def width(self, value):
-        """ width setter """
-        self.dim_validator("width", value)
-        self.__width = value
 
     @property
     def height(self):
-        """ height getter """
+        """Gets the value for height"""
         return self.__height
-
-    @height.setter
-    def height(self, value):
-        """ height setter """
-        self.dim_validator("height", value)
-        self.__height = value
 
     @property
     def x(self):
-        """ x getter method """
+        """Gets the value for x"""
         return self.__x
-
-    @x.setter
-    def x(self, value):
-        """ x setter method """
-        self.pos_validator("x", value)
-        self.__x = value
 
     @property
     def y(self):
-        """ y getter method """
+        """Gets the value for y"""
         return self.__y
+
+    # List of setter functions
+    @width.setter
+    def width(self, value):
+        """Sets the value for width"""
+        if (type(value) is not int):
+            raise TypeError("width must be an integer")
+
+        if value <= 0:
+            raise ValueError("width must be > 0")
+
+        self.__width = value
+
+    @height.setter
+    def height(self, value):
+        """Sets the value for height"""
+        if (type(value) is not int):
+            raise TypeError("height must be an integer")
+
+        if value <= 0:
+            raise ValueError("height must be > 0")
+
+        self.__height = value
+
+    @x.setter
+    def x(self, value):
+        """Sets the value for x"""
+        if (type(value) is not int):
+            raise TypeError("x must be an integer")
+
+        if value < 0:
+            raise ValueError("x must be >= 0")
+
+        self.__x = value
 
     @y.setter
     def y(self, value):
-        """ y setter method """
-        self.pos_validator("y", value)
+        """Sets the value for y"""
+        if (type(value) is not int):
+            raise TypeError("y must be an integer")
+
+        if value < 0:
+            raise ValueError("y must be >= 0")
+
         self.__y = value
 
-        ## Public Functions
-
-    def dim_validator(self, name, value):
-        """ Validate width and height """
-        if type(value) != int:
-            raise TypeError("{} must be an integer".format(name))
-        if value <= 0:
-            raise ValueError("{} must be > 0".format(name))
-
-    def pos_validator(self, name, value):
-        """ Validate x and y """
-        if type(value) != int:
-            raise TypeError("{} must be an integer".format(name))
-        if value < 0:
-            raise ValueError("{} must be >= 0".format(name))
-
     def area(self):
-        """ Returns the area of shape """
-        return self.__width * self.__height
+        """Defines the area of the rectangle"""
+        return (self.__height * self.__width)
 
     def display(self):
-        """ Display shape using # """
-        for _ in range(self.__y):
+        """Displays the rectangle using # """
+        for y in range(self.y):
+            print("")
+        for row in range(self.__height):
+            for x in range(self.x):
+                print(" ", end="")
+            for column in range(self.__width):
+                print("#", end="")
             print()
-        
-        for _ in range (self.__height):
-            print(" " * self.__x + "#" * self.__width)
 
     def __str__(self):
-        """ String representation of the Rectangle instance """
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height)
+        """Defines a format for the string representation of the class"""
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - \
+{self.__width}/{self.__height}"
 
-    def update(self, *args):
-        """ Update attr with provided args 
-        
-        args:
-            *args (int) : attr list
-                - id
-                - width
-                - height
-                - x
-                - y
+    def update(self, *args, **kwargs):
+        """Assigns an argument to each attribute"""
 
-            **kwargs (dict) : keyword dictionary
-        """
         if args and len(args) != 0:
             a = 0
             for arg in args:
@@ -127,3 +121,28 @@ class Rectangle(Base):
                 elif a == 4:
                     self.y = arg
                 a += 1
+
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "id":
+                    if v is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = v
+                elif k == "width":
+                    self.width = v
+                elif k == "height":
+                    self.height = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of a Rectangle"""
+
+        obj_dictionary = {'id': self.id, 'width': self.__width,
+                          'height': self.__height, 'x': self.__x,
+                          'y': self.__y}
+
+        return obj_dictionary
