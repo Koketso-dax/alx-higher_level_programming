@@ -676,6 +676,15 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R_dict['y'], 400)
         self.assertEqual(R_dict['id'], 500)
 
+class TestRectangleSaveToFile(unittest.TestCase):
+    """Unit test for empty save """
+    @patch('builtins.open', create=True)
+    def test_save_to_file_empty(self, mock_open):
+        """ test method """
+        Rectangle.save_to_file([])
+        mock_open.assert_called_once_with('Rectangle.json', 'w')
+        mock_open.return_value.write.assert_called_once_with("[]")
+
 class TestRectangle_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the Rectangle class."""
 

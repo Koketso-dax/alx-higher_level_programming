@@ -837,6 +837,13 @@ class TestSquare(unittest.TestCase):
     #         s1_dictionary = s1.to_dictionary("Hi")
     #     self.assertEqual(s, str(x.exception))
 
+class TestSquareSaveToFile(unittest.TestCase):
+    @patch('builtins.open', create=True)
+    def test_save_to_file_empty_list(self, mock_open):
+        """Test save_to_file method with an empty list"""
+        Square.save_to_file([])
+        mock_open.assert_called_once_with('Square.json', 'w')
+        mock_open.return_value.write.assert_called_once_with("[]")
 
 if __name__ == '__main__':
     unittest.main()
