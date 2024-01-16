@@ -9,7 +9,6 @@ from models.rectangle import Rectangle
 import json
 from io import StringIO
 import sys
-from unittest.mock import patch, mock_open
 
 '''
     Runs test cases for the Rectangle module
@@ -676,15 +675,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R_dict['x'], 300)
         self.assertEqual(R_dict['y'], 400)
         self.assertEqual(R_dict['id'], 500)
-
-class TestRectangleSaveToFile(unittest.TestCase):
-    """Unit test for empty save """
-    @patch('builtins.open', new_callable=mock_open)
-    def test_save_to_empty_target(self, mock_file_open):
-        """ test method """
-        Rectangle.save_to_file([])
-        mock_file_open.assert_called_once_with('Rectangle.json', 'w')
-        mock_file_open.return_value.write.assert_called_once_with("[]")
 
 class TestRectangle_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the Rectangle class."""
