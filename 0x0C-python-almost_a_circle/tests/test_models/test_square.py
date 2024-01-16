@@ -11,6 +11,7 @@ import os
 import sys
 import json
 from io import StringIO
+from unittest.mock import patch, mock_open
 
 
 '''
@@ -838,11 +839,11 @@ class TestSquare(unittest.TestCase):
     #     self.assertEqual(s, str(x.exception))
 
 class TestSquareSaveToFile(unittest.TestCase):
-    @patch('builtins.open', create=True)
-    def test_save_to_file_empty_list(self, mock_open):
+    @patch('builtins.open', new_callable=mock_open)
+    def test_save_to_file_empty_list(self, mock_file_open):
         """Test save_to_file method with an empty list"""
         Square.save_to_file([])
-        mock_open.assert_called_once_with('Square.json', 'w')
+        mock_file_open.assert_called_once_with('Square.json', 'w')
         mock_open.return_value.write.assert_called_once_with("[]")
 
 if __name__ == '__main__':
