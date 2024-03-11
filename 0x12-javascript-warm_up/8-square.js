@@ -1,15 +1,15 @@
 #!/usr/bin/node
 const size = process.argv[2];
-if (isNaN(size) || size === undefined) {
-  console.log('Missing size');
-} else {
-  const sizeInt = parseInt(size);
+function printSquare (size) {
+  if (!parseInt(size)) {
+    console.log('Missing size');
+    return;
+  }
 
-  for (let i = 0; i < sizeInt; i++) {
-    let row = '';
-    for (let j = 0; j < sizeInt; j++) {
-      row += 'x';
-    }
+  for (let i = 0; i < size; i++) {
+    const row = 'X'.repeat(size);
     console.log(row);
   }
 }
+
+printSquare(size);
