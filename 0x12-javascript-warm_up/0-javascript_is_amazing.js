@@ -1,4 +1,4 @@
 #!/usr/bin/node
 
-const msg = 'Javascript is amazing';
-console.log(msg);
+const Msg = 'Javascript is amazing';
+console.log(Msg);
