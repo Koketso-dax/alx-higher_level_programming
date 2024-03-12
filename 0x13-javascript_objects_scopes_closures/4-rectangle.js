@@ -11,11 +11,7 @@ class Rectangle {
      */
 
   constructor (w, h) {
-    if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number') {
-      // Create an empty object if w or h is 0 or not a positive integer
-      this.width = 0;
-      this.height = 0;
-    } else {
+    if (typeof w === 'number' && w > 0 && typeof h === 'number' && h > 0) {
       this.width = w;
       this.height = h;
     }
