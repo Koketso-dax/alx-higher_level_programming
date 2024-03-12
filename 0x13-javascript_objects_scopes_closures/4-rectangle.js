@@ -10,6 +10,7 @@ class Rectangle {
      * @param {number} h - The height of the rectangle.
      */
   constructor (w, h) {
+
     /**
        * The width of the rectangle.
        * @member {number}
@@ -21,6 +22,11 @@ class Rectangle {
        * @member {number}
        */
     this.height = (typeof h === 'number' && h > 0) ? h : 0;
+
+    if (this.width === 0 || this.height === 0) {
+      // If width or height is 0, create an empty object
+      return {};
+    }
   }
 
   /**
