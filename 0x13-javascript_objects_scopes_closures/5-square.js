@@ -7,14 +7,14 @@ const Rectangle = require('./4-rectangle');
  * @extends Rectangle
  */
 class Square extends Rectangle {
-    /**
+  /**
      * Creates a new Square with the specified size.
      * @constructor
      * @param {number} size - The size of the square.
      */
-    constructor(size) {
-      // Calls the constructor of the parent class (Rectangle)
-      super(size, size);
-    }
+  constructor (size) {
+    // Calls the constructor of the parent class (Rectangle)
+    super(size, size);
   }
-  module.exports = Square;
+}
+module.exports = Square;
