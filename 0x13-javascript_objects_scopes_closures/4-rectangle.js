@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 /**
  * Represents a Rectangle.
  * @class
@@ -39,6 +37,23 @@ class Rectangle {
       for (let i = 0; i < this.height; i++) {
         console.log('X'.repeat(this.width));
       }
+    }
+  
+    /**
+     * Exchanges the width and height of the rectangle.
+     * @method
+     */
+    rotate() {
+      [this.width, this.height] = [this.height, this.width];
+    }
+  
+    /**
+     * Doubles the width and height of the rectangle.
+     * @method
+     */
+    double() {
+      this.width *= 2;
+      this.height *= 2;
     }
   }
   
