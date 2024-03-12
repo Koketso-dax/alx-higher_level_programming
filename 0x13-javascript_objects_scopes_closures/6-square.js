@@ -8,7 +8,7 @@ const BaseSquare = require('./5-square');
 class Square extends BaseSquare {
     /**
      * Prints the square using the specified character c.
-     * If c is undefined, uses the character X.
+     * If c is undefined, uses X character.
      * @method
      * @param {string} [c] - The character to print the square.
      */
