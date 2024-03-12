@@ -9,23 +9,15 @@ class Rectangle {
      * @param {number} w - The width of the rectangle.
      * @param {number} h - The height of the rectangle.
      */
+
   constructor (w, h) {
-
-    /**
-       * The width of the rectangle.
-       * @member {number}
-       */
-    this.width = (typeof w === 'number' && w > 0) ? w : 0;
-
-    /**
-       * The height of the rectangle.
-       * @member {number}
-       */
-    this.height = (typeof h === 'number' && h > 0) ? h : 0;
-
-    if (this.width === 0 || this.height === 0) {
-      // If width or height is 0, create an empty object
-      return {};
+    if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number') {
+      // Create an empty object if w or h is 0 or not a positive integer
+      this.width = 0;
+      this.height = 0;
+    } else {
+      this.width = w;
+      this.height = h;
     }
   }
 
