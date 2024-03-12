@@ -9,7 +9,7 @@ class Rectangle {
      * @param {number} w - The width of the rectangle.
      * @param {number} h - The height of the rectangle.
      */
-  constructor(w, h) {
+  constructor (w, h) {
     /**
        * The width of the rectangle.
        * @member {number}
@@ -27,7 +27,7 @@ class Rectangle {
      * Prints the rectangle using the character X.
      * @method
      */
-  print() {
+  print () {
     for (let i = 0; i < this.height; i++) {
       console.log('X'.repeat(this.width));
     }
@@ -37,7 +37,7 @@ class Rectangle {
      * Exchanges the width and height of the rectangle.
      * @method
      */
-  rotate() {
+  rotate () {
     [this.width, this.height] = [this.height, this.width];
   }
 
@@ -45,7 +45,7 @@ class Rectangle {
      * Doubles the width and height of the rectangle.
      * @method
      */
-  double() {
+  double () {
     this.width *= 2;
     this.height *= 2;
   }
