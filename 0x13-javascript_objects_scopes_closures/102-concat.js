@@ -21,7 +21,7 @@ fs.readFile(sourceFile1, 'utf8', (err1, data1) => {
       process.exit(1);
     }
 
-    const concatenatedData = String(data1 + '\n' + data2 + '\n');
+    const concatenatedData = String(data1 + data2 );
 
     fs.writeFile(destinationFile, concatenatedData, 'utf8', (err) => {
       if (err) {
