@@ -16,13 +16,13 @@ class Rectangle {
        * The width of the rectangle.
        * @member {number}
        */
-    this.width = (typeof w === 'number' && w > 0) ? w : 0;
+    this.width = (typeof w === 'number' && w > 0) ? w : undefined;
 
     /**
        * The height of the rectangle.
        * @member {number}
        */
-    this.height = (typeof h === 'number' && h > 0) ? h : 0;
+    this.height = (typeof h === 'number' && h > 0) ? h : undefined;
   }
 
   /**
