@@ -1,3 +1,3 @@
 #!/bin/bash
 # displays the size of body in response field
-curl -s -w "%{http_code}" -o /dev/stderr "$1" | { [ "$(tail -n1 /dev/stderr)" -eq 200 ] && cat; }
+if [ $(curl -L -s -X HEAD -w "%{http_code}" "$1") == '200' ]; then curl -Ls "$1"; fi
