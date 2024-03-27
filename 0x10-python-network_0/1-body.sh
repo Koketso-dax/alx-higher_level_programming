@@ -1,3 +1,6 @@
 #!/bin/bash
 # displays the size of body in response field
-if [ "$(curl -sLI "$1" -X GET | grep "200 OK" | cut -d' ' -f2)" = '200' ]; then curl -sL "$1"; fi
+response_code=$(curl -sLI "$1" -X GET | grep "HTTP" | cut -d' ' -f2)
+if [ "$response_code" = '200' ]; then
+    curl -sL "$1"
+fi
