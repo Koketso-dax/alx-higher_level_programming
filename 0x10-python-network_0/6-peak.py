@@ -1,32 +1,21 @@
 #!/usr/bin/python3
-""""6-peak func module"""
-
-
+"""
+Peak number module
+"""
 def find_peak(list_of_integers):
     """
-    finds a peak in a list of unsorted integers.
+    Finds a peak in a list of unsorted integers.
     """
-    if list_of_integers is None or len(list_of_integers) == 0:
+    if not list_of_integers:
         return None
 
-    if len(list_of_integers) == 1:
-        return list_of_integers[0]
+    middle_index = len(list_of_integers) // 2
+    middle_element = list_of_integers[middle_index]
 
-    mid_idx = int(len(list_of_integers) / 2)
-
-    if mid_idx != len(list_of_integers) - 1:
-        if list_of_integers[mid_idx - 1] < list_of_integers[mid_idx] and\
-           list_of_integers[mid_idx + 1] < list_of_integers[mid_idx]:
-            return list_of_integers[mid_idx]
+    if (middle_index == 0 or middle_element >= list_of_integers[middle_index - 1]) and \
+       (middle_index == len(list_of_integers) - 1 or middle_element >= list_of_integers[middle_index + 1]):
+        return middle_element
+    elif middle_index > 0 and list_of_integers[middle_index - 1] > middle_element:
+        return find_peak(list_of_integers[:middle_index])
     else:
-        if list_of_integers[mid_idx - 1] < list_of_integers[mid_idx]:
-            return list_of_integers[mid_idx]
-        else:
-            return list_of_integers[mid_idx - 1]
-
-    if list_of_integers[mid_idx - 1] > list_of_integers[mid_idx]:
-        a_list = list_of_integers[0:mid_idx]
-    else:
-        a_list = list_of_integers[mid_idx + 1:]
-
-    return find_peak(a_list)
+        return find_peak(list_of_integers[middle_index + 1:])
