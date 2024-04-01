@@ -25,6 +25,7 @@ def fetch_url_body(url):
         return None
     return body
 
+
 if __name__ == "__main__":
     url = sys.argv[1]
     body = fetch_url_body(url)

@@ -19,6 +19,7 @@ def fetch_status(url):
         html = response.read()
     return html
 
+
 if __name__ == "__main__":
     url = "https://alx-intranet.hbtn.io/status"
     html = fetch_status(url)

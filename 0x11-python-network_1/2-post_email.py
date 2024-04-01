@@ -25,6 +25,7 @@ def send_post_request(url, email):
         body = response.read().decode('utf-8')
     return body
 
+
 if __name__ == "__main__":
     url = sys.argv[1]
     email = sys.argv[2]
